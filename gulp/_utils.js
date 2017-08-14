@@ -11,7 +11,7 @@ module.exports = {
       message: err.message
     })(err);
     gutil.beep();
-      this.emit('end');
+    this.emit('end');
   },
   onDev: function (task, other) {
     'use strict';
@@ -26,5 +26,9 @@ module.exports = {
       other = gutil.noop();
     }
     return gutil.env.type !== config.env.dev ? task : gutil.noop();
+  },
+  renameFile: function (path, search, replace) {
+    'use strict';
+    path.basename = path.basename.replace(search, replace);
   }
 };

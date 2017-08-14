@@ -1,9 +1,14 @@
 module.exports = {
+  rtl: true,
   styles: {
     source: 'sass/**/*.scss',
+    directionalSource: 'sass/**/*.ltr.scss',
     destination: 'dist/css/',
     options: {
       outputStyle: 'expanded'
+    },
+    variables: {
+      $dir: 'rtl'
     }
   },
   scripts: {
@@ -53,9 +58,9 @@ module.exports = {
     ]
   },
   browserSync: {
-    proxy: {
-      target: null
-    },
-    open: false
+    proxy: 'http://0.0.0.0:8080',
+    open: 'external',
+    xip: false,
+    logConnections: false
   }
 };

@@ -1,4 +1,4 @@
-module.exports = function (gulp, config) {
+module.exports = function (gulp, config, bs) {
   'use strict';
 
   var utils = require('./_utils');
@@ -9,6 +9,8 @@ module.exports = function (gulp, config) {
   var plumber = require('gulp-plumber');
   var stylelint = require('gulp-stylelint');
   var autoprefixer = require('autoprefixer');
+  var sassVariables = require('gulp-sass-variables');
+  var rename = require('gulp-rename');
 
 
   var processors = [
@@ -19,7 +21,7 @@ module.exports = function (gulp, config) {
     return gulp.src(config.styles.source)
       .pipe(plumber({errorHandler: utils.errorHandler}))
       .pipe(gutil.env.type === config.env.dev ? stylelint(config.stylelint.options) : stylelint(config.stylelint.optionsTest))
-      .pipe(plumber.stop())
+      .pipe(plumber.stop());
   });
 
   gulp.task('styles', function () {
@@ -30,6 +32,12 @@ module.exports = function (gulp, config) {
       .pipe(postcss(processors))
       .pipe(gutil.env.type === config.env.dev ? sourcemaps.write() : gutil.noop())
       .pipe(plumber.stop())
-      .pipe(gulp.dest(config.styles.destination));
+      .pipe(gulp.dest(config.styles.destination))
+      .pipe(gulp.src(config.styles.directionalSource))
+      .pipe(sassVariables(config.styles.variables))
+      .pipe(sass(config.styles.options).on('error', sass.logError))
+      .pipe(rename(utils.renameFile('.ltr', '.rtl')))
+      .pipe(gulp.dest(config.styles.destination))
+      .pipe(utils.onDev(bs.stream()));
   });
 };

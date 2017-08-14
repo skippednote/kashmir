@@ -1,16 +1,8 @@
-module.exports = function (gulp, config) {
+module.exports = function (gulp, config, bs) {
   'use strict';
 
   gulp.task('watch', function () {
-    var browserSync = require('browser-sync').create();
-    browserSync.init({
-      proxy: {
-        target: 'http://localhost:8080'
-      },
-      open: 'external',
-      xip: true,
-      logConnections: true
-    });
+    bs.init(config.browserSync);
 
     gulp.watch(
       [config.styles.source, config.scripts.source],
