@@ -4,3 +4,4 @@ patternlab
 dist
 .idea
 .vscode
+vendor
