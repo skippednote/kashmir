@@ -1,8 +1,11 @@
+// Sass plugins.
 @import "breakpoint-sass/stylesheets/breakpoint";
 @import "sass-direction/direction";
 
+// Theme configuration.
 @import 'config/**/*';
 
+// Theme components based on Atomic Design.
 @import '00-atom/**/*';
 @import '01-molecules/**/*';
 @import '02-organisms/**/*';

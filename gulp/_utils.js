@@ -17,7 +17,11 @@ module.exports = {
     if (!other) {
       other = gutil.noop();
     }
-    return gutil.env.type === config.env.dev ? task : other;
+    if (gutil.env.type === 'undefined') {
+      gutil.env.type = 'development';
+    }
+    return (gutil.env.type !== config.env.prod)
+      ? task : other;
   },
   onOther: function (task, other) {
     'use strict';

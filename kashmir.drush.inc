@@ -169,6 +169,7 @@ function _kashmir_get_files_to_copy() {
     'kashmir.libraries.yml',
     'screenshot.png',
     'README.md',
+    'templates',
   ];
 
   return $files;

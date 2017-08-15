@@ -3,6 +3,7 @@
 
 ![Kashmir Screenshot](screenshot.png)
 
+
 #### Setup
 - Node
   - Use `nvm`
@@ -40,6 +41,14 @@
   - Update settings in `gulp/_config.js` for Browsersync and Source for scripts and styles.
 
 
+#### Usage
+- Dev Environment
+  - Build assets by running: `gulp`.
+  - Watch for changes using: `gulp watch`.
+- Prod/Test Environment
+  - Build assets by running: `gulp --type production`.
+
+
 #### Theme tasks
 - Styles
   - `gulp styles`
@@ -56,6 +65,9 @@
 - Scripts Lint
   - `gulp scripts-lint`
   - To check scripts for errors and warnings.
+- Performance
+  - `gulp performance`
+  - To check the stats of the stylesheets.
 - SVG
   - `gulp svg`
   - To combine multiple SVG files into a single sprite.
