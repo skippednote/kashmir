@@ -1,5 +1,5 @@
 name: Kashmir
-description: A sub-theme with modern tooling.
+description: A theme with modern tooling.
 type: theme
 core: 8.x
 base theme: stable
@@ -10,19 +10,19 @@ regions:
   sidebar: Sidebar
   footer: Footer
 
-component-libraries:
-  atoms:
-    paths:
-      - components/_patterns/00-atoms
-  molecules:
-    paths:
-      - components/_patterns/01-molecules
-  organisms:
-    paths:
-      - components/_patterns/02-organisms
-  templates:
-    paths:
-      - components/_patterns/03-templates
-  pages:
-    paths:
-      - components/_patterns/04-pages
+# component-libraries:
+#   atoms:
+#     paths:
+#       - components/_patterns/00-atoms
+#   molecules:
+#     paths:
+#       - components/_patterns/01-molecules
+#   organisms:
+#     paths:
+#       - components/_patterns/02-organisms
+#   templates:
+#     paths:
+#       - components/_patterns/03-templates
+#   pages:
+#     paths:
+#       - components/_patterns/04-pages

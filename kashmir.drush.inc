@@ -24,7 +24,7 @@ function kashmir_drush_command() {
       'path' => 'The destination of your theme. Defaults to "themes/custom".',
     ],
     'examples' => [
-      'drush kashmir "sub theme"' => 'Creates a Kashmir sub-theme called "theme", using the default options.',
+      'drush kashmir "sub theme"' => 'Creates a Kashmir sub-theme called "sub theme", using the default options.',
       'drush kashmir "sub theme" --machine_name=sub_theme' => 'Creates a Kashmir sub-theme called "sub theme" with a specific machine name.',
       'drush kashmir "sub theme" --description="Based on Kashmir base theme."' => 'Creates a Kashmir sub-theme called "sub theme" with a specific description.',
       'drush kashmir "sub theme" --path="themes"' => 'Creates a Kashmir sub-theme called "sub theme" at a specific path.',
@@ -131,7 +131,6 @@ function _kashmir_get_alterations($human_readable_name, $machine_name) {
  * Returns an array of files to make string replacements.
  */
 function _kashmir_get_files_to_alter() {
-  // Slim files and directories declaration.
   $files = [
     'kashmir.info.yml',
     'kashmir.theme',
@@ -149,7 +148,6 @@ function _kashmir_get_files_to_alter() {
  * This function supports both directories and individual files.
  */
 function _kashmir_get_files_to_copy() {
-  // Slim files and directories declaration.
   $files = [
     '.editorconfig',
     '.eslintignore',
@@ -164,7 +162,13 @@ function _kashmir_get_files_to_copy() {
     'js',
     'package-lock.json',
     'package.json',
-    'sass'
+    'sass',
+    'kashmir.info.yml',
+    'kashmir.theme',
+    'kashmir.breakpoints.yml',
+    'kashmir.libraries.yml',
+    'screenshot.png',
+    'README.md',
   ];
 
   return $files;
@@ -175,10 +179,10 @@ function _kashmir_get_files_to_copy() {
  */
 function _kashmir_get_files_to_rename() {
   $files = [
-    'emulsify.info.yml',
-    'emulsify.theme',
-    'emulsify.breakpoints.yml',
-    'emulsify.libraries.yml',
+    'kashmir.info.yml',
+    'kashmir.theme',
+    'kashmir.breakpoints.yml',
+    'kashmir.libraries.yml',
   ];
 
   return $files;
