@@ -10,8 +10,6 @@ module.exports = function (gulp, config, bs) {
   var stylelint = require('gulp-stylelint');
   var autoprefixer = require('autoprefixer');
   var sassVariables = require('gulp-sass-variables');
-  var rename = require('gulp-rename');
-
 
   var processors = [
     autoprefixer(config.autoprefixer)
@@ -31,12 +29,12 @@ module.exports = function (gulp, config, bs) {
       .pipe(sass(config.styles.options).on('error', sass.logError))
       .pipe(postcss(processors))
       .pipe(gutil.env.type === config.env.dev ? sourcemaps.write() : gutil.noop())
-      .pipe(plumber.stop())
       .pipe(gulp.dest(config.styles.destination))
       .pipe(gulp.src(config.styles.directionalSource))
       .pipe(sassVariables(config.styles.variables))
       .pipe(sass(config.styles.options).on('error', sass.logError))
-      .pipe(rename(utils.renameFile('.ltr', '.rtl')))
+      .pipe(plumber.stop())
+      .pipe(utils.renameRTL())
       .pipe(gulp.dest(config.styles.destination))
       .pipe(utils.onDev(bs.stream()));
   });

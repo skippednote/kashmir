@@ -24,7 +24,7 @@
     "stylelint-scss": "^2.0.1"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "postinstall": "rm -rf patternlab && composer create-project -n pattern-lab/edition-drupal-standard patternlab && php patternlab/core/console -c --set twigAutoescape=0 && php patternlab/core/console -c --set sourceDir=../components && rm -rf patternlab/source"
   },
   "repository": {
     "type": "git",

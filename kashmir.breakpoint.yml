@@ -1,0 +1,28 @@
+kashmir.thumb:
+  label: Thumb
+  mediaQuery: 'all and (min-width: 0 and max-width: 30rem)'
+  weight: 0
+  multipliers:
+    - 1x
+    - 2x
+kashmir.palm:
+  label: Palm
+  mediaQuery: 'all and (min-width: 30.0625rem) and (max-width: 47.9375rem)'
+  weight: 1
+  multipliers:
+    - 1x
+    - 2x
+kashmir.lap:
+  label: Lap
+  mediaQuery: 'all and (min-width: 48rem) and (max-width: 64rem)'
+  weight: 2
+  multipliers:
+    - 1x
+    - 2x
+kashmir.desk:
+  label: Desk
+  mediaQuery: 'all and (min-width: 64.0625rem)'
+  weight: 3
+  multipliers:
+    - 1x
+    - 2x

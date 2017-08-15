@@ -58,9 +58,13 @@ module.exports = {
     ]
   },
   browserSync: {
-    proxy: 'http://0.0.0.0:8080',
-    open: 'external',
+    proxy: null,
+    open: false,
     xip: false,
     logConnections: false
+  },
+  patternlab: {
+    command: 'php patternlab/core/console --generate',
+    source: 'patternlab/source/_patterns/**/*.twig'
   }
 };

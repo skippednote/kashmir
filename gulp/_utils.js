@@ -1,17 +1,16 @@
 var config = require('./_config');
 var notify = require('gulp-notify');
 var gutil = require('gulp-util');
+var rename = require('gulp-rename');
 
 module.exports = {
   errorHandler: function (err) {
     'use strict';
-
     notify.onError({
       title: 'Gulp error in ' + err.plugin,
       message: err.message
     })(err);
     gutil.beep();
-    this.emit('end');
   },
   onDev: function (task, other) {
     'use strict';
@@ -27,8 +26,10 @@ module.exports = {
     }
     return gutil.env.type !== config.env.dev ? task : gutil.noop();
   },
-  renameFile: function (path, search, replace) {
+  renameRTL: function (path) {
     'use strict';
-    path.basename = path.basename.replace(search, replace);
+    return rename(function (path) {
+      path.basename = path.basename.replace('.ltr', '.rtl');
+    });
   }
 };

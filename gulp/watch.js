@@ -5,10 +5,10 @@ module.exports = function (gulp, config, bs) {
     bs.init(config.browserSync);
 
     gulp.watch(
-      [config.styles.source, config.scripts.source],
+      [config.styles.source, config.scripts.source, config.patternlab.source],
       gulp.series(
         gulp.parallel('styles-lint', 'scripts-lint'),
-        gulp.parallel('styles', 'scripts')
+        gulp.parallel('styles', 'scripts', 'patternlab')
       )
     );
   });
