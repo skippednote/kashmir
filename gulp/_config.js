@@ -8,15 +8,22 @@ module.exports = {
     directionalSource: 'sass/**/*.ltr.scss',
     destination: 'dist/css/',
     options: {
-      outputStyle: 'expanded'
+      outputStyle: 'expanded',
+      includePaths: [
+        './node_modules'
+      ]
     },
     variables: {
-      $dir: 'rtl'
+      $direction: 'rtl'
     }
   },
   scripts: {
     source: 'js/**/*.js',
     destination: 'dist/js/'
+  },
+  svg: {
+    source: 'images/icons/svg/**/*.svg',
+    destination: 'dist/images/icons/svg/'
   },
   env: {
     prod: 'production',

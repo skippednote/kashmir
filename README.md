@@ -56,9 +56,12 @@
 - Scripts Lint
   - `gulp scripts-lint`
   - To check scripts for errors and warnings.
+- SVG
+  - `gulp svg`
+  - To combine multiple SVG files into a single sprite.
 - Watch
   - `gulp watch`
   - Starts a proxy server and, lints and compiles file on change.
 - Default
   - `gulp`
-  - To lint and compile the scripts and styles in theme.
+  - To generate SVG sprite and lint + compile the scripts and styles in theme.

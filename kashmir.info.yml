@@ -10,6 +10,10 @@ regions:
   sidebar: Sidebar
   footer: Footer
 
+libraries:
+  - kashmir/reset
+  - kashmir/global
+
 # component-libraries:
 #   atoms:
 #     paths:

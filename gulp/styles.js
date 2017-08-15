@@ -3,6 +3,7 @@ module.exports = function (gulp, config, bs) {
 
   var utils = require('./_utils');
   var sass = require('gulp-sass');
+  var sassGlob = require('gulp-sass-glob');
   var postcss = require('gulp-postcss');
   var sourcemaps = require('gulp-sourcemaps');
   var gutil = require('gulp-util');
@@ -24,18 +25,25 @@ module.exports = function (gulp, config, bs) {
 
   gulp.task('styles', function () {
     return gulp.src(config.styles.source)
-      .pipe(plumber({errorHandler: utils.errorHandler}))
-      .pipe(gutil.env.type === config.env.dev ? sourcemaps.init() : gutil.noop())
+      .pipe(utils.onDev(plumber({errorHandler: utils.errorHandler})))
+      .pipe(utils.onDev(sourcemaps.init()))
+      .pipe(sassGlob())
       .pipe(sass(config.styles.options).on('error', sass.logError))
       .pipe(postcss(processors))
-      .pipe(gutil.env.type === config.env.dev ? sourcemaps.write() : gutil.noop())
+      .pipe(utils.onDev(sourcemaps.write()))
       .pipe(gulp.dest(config.styles.destination))
+
       .pipe(gulp.src(config.styles.directionalSource))
+      .pipe(utils.onDev(sourcemaps.init()))
+      .pipe(sassGlob())
       .pipe(sassVariables(config.styles.variables))
       .pipe(sass(config.styles.options).on('error', sass.logError))
-      .pipe(plumber.stop())
+      .pipe(postcss(processors))
       .pipe(utils.renameRTL())
+      .pipe(utils.onDev(plumber.stop()))
+      .pipe(utils.onDev(sourcemaps.write()))
       .pipe(gulp.dest(config.styles.destination))
+
       .pipe(utils.onDev(bs.stream()));
   });
 };

@@ -3,6 +3,6 @@ module.exports = function (gulp, config) {
 
   gulp.task('default', gulp.series(
     gulp.parallel('styles-lint', 'scripts-lint'),
-    gulp.parallel('styles', 'scripts')
+    gulp.parallel('styles', 'scripts', 'svg')
   ));
 };
