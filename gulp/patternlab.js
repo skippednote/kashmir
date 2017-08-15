@@ -1,4 +1,4 @@
-module.exports = function (gulp, config) {
+module.exports = function (gulp, config, bs) {
   'use strict';
 
   var exec = require('child_process').exec;
@@ -12,6 +12,8 @@ module.exports = function (gulp, config) {
         utils.errorHandler(err);
         done();
       }
+
+      bs.reload();
       done();
     });
   });

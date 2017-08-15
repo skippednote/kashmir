@@ -1,7 +1,10 @@
 module.exports = {
   rtl: true,
   styles: {
-    source: 'sass/**/*.scss',
+    source: [
+      'sass/**/*.scss',
+      'components/**/*.scss'
+    ],
     directionalSource: 'sass/**/*.ltr.scss',
     destination: 'dist/css/',
     options: {
@@ -59,12 +62,15 @@ module.exports = {
   },
   browserSync: {
     proxy: null,
-    open: false,
+    open: true,
     xip: false,
     logConnections: false
   },
   patternlab: {
     command: 'php patternlab/core/console --generate',
-    source: 'patternlab/source/_patterns/**/*.twig'
+    source: [
+      'components/**/*.twig',
+      'components/**/*.yml'
+    ]
   }
 };
