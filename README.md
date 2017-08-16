@@ -3,6 +3,13 @@
 
 ![Kashmir Screenshot](screenshot.png)
 
+#### Features
+- **Lean**: Uses Stable templates and no opinionated files or libraries included.
+- **Patternlab**: Architected to support Patternlab with Drupal.
+- **Static Code Analysis**: Checks both scripts and styles for stylistic and syntax errors.
+- **SVG**: Support SVG sprite generation.
+- **Performance Testing**: Generates info logs for all the stylesheets generated.
+
 
 #### Setup
 - Node
