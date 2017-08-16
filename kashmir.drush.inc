@@ -278,6 +278,7 @@ function _kashmir_rename_info_file($theme_path, $theme_name) {
     ['pattern' => '/\# Information added by Drupal\.org packaging script on [\d-]+\n/', 'replacement' => ''],
     ['pattern' => "/version: '[^']+'\n/", 'replacement' => ''],
     ['pattern' => '/datestamp: \d+\n/', 'replacement' => ''],
+    ['pattern' => '/base theme: [a-z]*/', 'replacement' => 'base theme: kashmir'],
   ];
 
   $file_path = drush_normalize_path($file_path);
