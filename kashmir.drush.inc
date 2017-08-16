@@ -109,6 +109,9 @@ function drush_kashmir_create($human_readable_name, $machine_name, $description,
   $files_to_rename = _kashmir_get_files_to_rename();
   _kashmir_rename_files($theme_path, $machine_name, $files_to_rename);
 
+  // Phase 4: Rename info yml.
+  drush_op('_kashmir_rename_info_file', $theme_path, $machine_name);
+
   _kashmir_notify($human_readable_name, $theme_path);
 }
 
@@ -257,6 +260,40 @@ function _kashmir_file_str_replace($file_path, $find, $replace) {
   $file_contents = file_get_contents($file_path);
   $file_contents = str_replace($find, $replace, $file_contents);
   file_put_contents($file_path, $file_contents);
+}
+
+/**
+ * Rename info file to remove data added by D.O.
+ */
+function _kashmir_rename_info_file($theme_path, $theme_name) {
+  $file_path = $theme_path . '/' . $theme_name . '.info.yml';
+  $info_strings = [
+    '# core: 8.x' => 'core: 8.x',
+    "core: '8.x'\n" => '',
+    "project: '$theme_name'\n" => '',
+  ];
+
+  $info_regexs = [
+    ['pattern' => "/hidden: true\n/", 'replacement' => ''],
+    ['pattern' => '/\# Information added by Drupal\.org packaging script on [\d-]+\n/', 'replacement' => ''],
+    ['pattern' => "/version: '[^']+'\n/", 'replacement' => ''],
+    ['pattern' => '/datestamp: \d+\n/', 'replacement' => ''],
+  ];
+
+  $file_path = drush_normalize_path($file_path);
+  $file_contents = file_get_contents($file_path);
+  if ($file_contents !== FALSE) {
+    // Find text with strings.
+    $find = array_keys($info_strings);
+    $replace = $info_strings;
+    $file_contents = str_replace($find, $replace, $file_contents);
+    // Find text with regex.
+    foreach ($info_regexs as $regex) {
+      $file_contents = preg_replace($regex['pattern'], $regex['replacement'], $file_contents);
+    }
+    // Write to file.
+    file_put_contents($file_path, $file_contents);
+  }
 }
 
 /**
