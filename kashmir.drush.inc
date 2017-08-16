@@ -110,7 +110,7 @@ function drush_kashmir_create($human_readable_name, $machine_name, $description,
   _kashmir_rename_files($theme_path, $machine_name, $files_to_rename);
 
   // Phase 4: Rename info yml.
-  drush_op('_kashmir_rename_info_file', $theme_path, $machine_name);
+  drush_op('_kashmir_rename_info_file', $theme_path, $machine_name, $description);
 
   _kashmir_notify($human_readable_name, $theme_path);
 }
@@ -265,7 +265,7 @@ function _kashmir_file_str_replace($file_path, $find, $replace) {
 /**
  * Rename info file to remove data added by D.O.
  */
-function _kashmir_rename_info_file($theme_path, $theme_name) {
+function _kashmir_rename_info_file($theme_path, $theme_name, $description) {
   $file_path = $theme_path . '/' . $theme_name . '.info.yml';
   $info_strings = [
     '# core: 8.x' => 'core: 8.x',
@@ -279,6 +279,7 @@ function _kashmir_rename_info_file($theme_path, $theme_name) {
     ['pattern' => "/version: '[^']+'\n/", 'replacement' => ''],
     ['pattern' => '/datestamp: \d+\n/', 'replacement' => ''],
     ['pattern' => '/base theme: [a-z]*/', 'replacement' => 'base theme: kashmir'],
+    ['pattern' => '/description: .*/', 'replacement' => "description: $description"],
   ];
 
   $file_path = drush_normalize_path($file_path);

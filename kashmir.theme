@@ -9,7 +9,11 @@
  * Implements hook_library_info_alter().
  */
 function kashmir_library_info_alter(&$libraries, $extension) {
-  if ($extension === 'kashmir') {
+  $language_manager = \Drupal::service('language_manager');
+  $language = $language_manager->getCurrentLanguage();
+  $direction = $language->getDirection();
+
+  if ($extension === 'kashmir' && $direction === 'rtl') {
     foreach($libraries as $library_name  => $library_value) {
       if (!empty($library_value['css'])) {
         foreach($library_value['css'] as $css_type => $css_files) {
