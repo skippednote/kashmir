@@ -14,10 +14,10 @@ function kashmir_library_info_alter(&$libraries, $extension) {
   $direction = $language->getDirection();
 
   if ($extension === 'kashmir' && $direction === 'rtl') {
-    foreach($libraries as $library_name  => $library_value) {
+    foreach ($libraries as $library_name => $library_value) {
       if (!empty($library_value['css'])) {
-        foreach($library_value['css'] as $css_type => $css_files) {
-          foreach($library_value['css'][$css_type] as $file_name => $file_options) {
+        foreach ($library_value['css'] as $css_type => $css_files) {
+          foreach ($library_value['css'][$css_type] as $file_name => $file_options) {
             if (strpos($file_name, '.ltr.css')) {
               $file_name_rtl = str_replace(".ltr.css", ".rtl.css", $file_name);
               unset($libraries[$library_name]['css'][$css_type][$file_name_rtl]);

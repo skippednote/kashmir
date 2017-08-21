@@ -1,5 +1,10 @@
 <?php
-// https://www.drupal.org/node/2486991
+
+/**
+ * @file
+ * Function to support dummy url in the Pattern Lab.
+ */
+
 $function = new Twig_SimpleFunction('url', function ($string) {
   return '#';
 });

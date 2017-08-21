@@ -230,7 +230,7 @@ function _kashmir_alter_files($theme_path, $files_to_alter = [], $alterations = 
  * @return bool
  *   A boolean representing the success or failure of the command.
  */
-function _kashmir_copy_files($files = [], $destination_path = '') {
+function _kashmir_copy_files(array $files = [], $destination_path = '') {
   if (empty($files) || empty($destination_path)) {
     return FALSE;
   }
@@ -280,6 +280,7 @@ function _kashmir_rename_info_file($theme_path, $theme_name, $description) {
     ['pattern' => '/datestamp: \d+\n/', 'replacement' => ''],
     ['pattern' => '/base theme: [a-z]*/', 'replacement' => 'base theme: kashmir'],
     ['pattern' => '/description: .*/', 'replacement' => "description: $description"],
+    ['pattern' => '/kashmir\/reset/', 'replacement' => "$theme_name/global"],
   ];
 
   $file_path = drush_normalize_path($file_path);
