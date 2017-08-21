@@ -109,8 +109,11 @@ function drush_kashmir_create($human_readable_name, $machine_name, $description,
   $files_to_rename = _kashmir_get_files_to_rename();
   _kashmir_rename_files($theme_path, $machine_name, $files_to_rename);
 
-  // Phase 4: Rename info yml.
-  drush_op('_kashmir_rename_info_file', $theme_path, $machine_name, $description);
+  // Phase 4: Update files.
+  $files_to_update = _kashmir_get_files_to_update();
+  foreach ($files_to_update as $file) {
+    drush_op('_kashmir_update_file', $theme_path, $machine_name, $description, $file);
+  }
 
   _kashmir_notify($human_readable_name, $theme_path);
 }
@@ -263,10 +266,22 @@ function _kashmir_file_str_replace($file_path, $find, $replace) {
 }
 
 /**
- * Rename info file to remove data added by D.O.
+ * Get files to Update.
  */
-function _kashmir_rename_info_file($theme_path, $theme_name, $description) {
-  $file_path = $theme_path . '/' . $theme_name . '.info.yml';
+function _kashmir_get_files_to_update() {
+  $files = [
+    'kashmir.info.yml',
+    'README.md',
+    'kashmir.libraries.yml',
+  ];
+
+  return $files;
+}
+
+/**
+ * Update file based on regex patterns.
+ */
+function _kashmir_update_file($file_path, $theme_name, $description, $file) {
   $info_strings = [
     '# core: 8.x' => 'core: 8.x',
     "core: '8.x'\n" => '',
@@ -280,9 +295,12 @@ function _kashmir_rename_info_file($theme_path, $theme_name, $description) {
     ['pattern' => '/datestamp: \d+\n/', 'replacement' => ''],
     ['pattern' => '/base theme: [a-z]*/', 'replacement' => 'base theme: kashmir'],
     ['pattern' => '/description: .*/', 'replacement' => "description: $description"],
-    ['pattern' => '/kashmir\/reset/', 'replacement' => "$theme_name/global"],
+    ['pattern' => "/$theme_name\/reset/", 'replacement' => "$theme_name/global"],
+    ['pattern' => "/(?s)\n\n\n#### Setup sub-theme.*?(?=\n\n)/", 'replacement' => ''],
+    ['pattern' => "/(?s)\nreset\:.*/", 'replacement' => ''],
   ];
 
+  $file_path = $file_path . '/' . str_replace("kashmir", $theme_name, $file);
   $file_path = drush_normalize_path($file_path);
   $file_contents = file_get_contents($file_path);
   if ($file_contents !== FALSE) {
@@ -312,3 +330,4 @@ function _kashmir_notify($human_readable_name, $theme_path) {
   ]);
   drush_print($message);
 }
+

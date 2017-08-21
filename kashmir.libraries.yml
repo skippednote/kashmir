@@ -1,9 +1,3 @@
-reset:
-  version: VERSION
-  css:
-    base:
-      dist/css/reset.css: {}
-
 global:
   version: VERSION
   css:
@@ -11,3 +5,9 @@ global:
       dist/css/global.css: {}
   js:
     dist/global.js: {}
+
+reset:
+  version: VERSION
+  css:
+    base:
+      dist/css/reset.css: {}
