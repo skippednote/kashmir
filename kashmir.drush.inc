@@ -273,6 +273,8 @@ function _kashmir_get_files_to_update() {
     'kashmir.info.yml',
     'README.md',
     'kashmir.libraries.yml',
+    'package.json',
+    'package-lock.json'
   ];
 
   return $files;

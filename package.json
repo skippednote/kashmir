@@ -30,7 +30,8 @@
     "stylelint-config-standard": "^17.0.0"
   },
   "scripts": {
-    "postinstall": "rm -rf patternlab && composer create-project -n pattern-lab/edition-drupal-standard patternlab && php patternlab/core/console -c --set twigAutoescape=0 && php patternlab/core/console -c --set sourceDir=../components && rm -rf patternlab/source"
+    "postinstall": "rm -rf patternlab && composer create-project -n pattern-lab/edition-drupal-standard patternlab && php patternlab/core/console -c --set twigAutoescape=0 && php patternlab/core/console -c --set sourceDir=../components && rm -rf patternlab/source",
+    "precommit": "gulp styles-lint && gulp scripts-lint"
   },
   "repository": {
     "type": "git",
@@ -45,6 +46,7 @@
   "homepage": "https://github.com/skippednote/kashmir#readme",
   "devDependencies": {
     "babel-preset-env": "^1.6.0",
-    "gulp-babel": "^7.0.0"
+    "gulp-babel": "^7.0.0",
+    "husky": "^0.14.3"
   }
 }
