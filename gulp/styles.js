@@ -18,9 +18,9 @@ module.exports = function (gulp, config, bs) {
 
   gulp.task('styles-lint', function () {
     return gulp.src(config.styles.source)
-      .pipe(plumber({errorHandler: utils.errorHandler}))
+      .pipe(utils.onDev(plumber({errorHandler: utils.errorHandler})))
       .pipe(gutil.env.type === config.env.dev ? stylelint(config.stylelint.options) : stylelint(config.stylelint.optionsTest))
-      .pipe(plumber.stop());
+      .pipe(utils.onDev(plumber.stop()));
   });
 
   gulp.task('styles', function () {
@@ -33,7 +33,7 @@ module.exports = function (gulp, config, bs) {
       .pipe(utils.onDev(sourcemaps.write()))
       .pipe(gulp.dest(config.styles.destination))
 
-      .pipe(gulp.src(config.styles.directionalSource))
+      .pipe(gulp.src(config.styles.directionalSource, {passthrough: true}))
       .pipe(utils.onDev(sourcemaps.init()))
       .pipe(sassGlob())
       .pipe(sassVariables(config.styles.variables))

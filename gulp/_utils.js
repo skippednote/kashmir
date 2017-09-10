@@ -6,6 +6,9 @@ var rename = require('gulp-rename');
 module.exports = {
   errorHandler: function (err) {
     'use strict';
+    if (gutil.env.type === 'production') {
+      throw new Error('Gulp error in ' + err.plugin);
+    }
     notify.onError({
       title: 'Gulp error in ' + err.plugin,
       message: err.message

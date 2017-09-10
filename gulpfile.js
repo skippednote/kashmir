@@ -8,5 +8,6 @@ require('./gulp/patternlab')(gulp, config, bs);
 require('./gulp/svg')(gulp, config, bs);
 require('./gulp/performance')(gulp, config, bs);
 require('./gulp/watch')(gulp, config, bs);
+require('./gulp/lint')(gulp, config);
 require('./gulp/default')(gulp, config);
 

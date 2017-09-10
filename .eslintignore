@@ -1,0 +1,6 @@
+components/*
+!components/_patterns
+
+patternlab
+node_modules
+dist

@@ -8,9 +8,8 @@
 $function = new Twig_SimpleFunction(
     'link',
     function ($title, $url, $attributes) {
-      if (isset($attributes) && isset($attributes['class'])) {
-        $classes = implode(' ', $attributes['class']);
-        return '<a href="' . $url . '" class="' . $classes . '">' . $title . '</a>';
+      if (isset($attributes)) {
+        return '<a href="' . $url . '"' . $attributes . '>' . $title . '</a>';
       }
       else {
         return '<a href="' . $url . '">' . $title . '</a>';
