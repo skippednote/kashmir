@@ -6,9 +6,11 @@
 #### Features
 - **Lean**: Uses Stable templates and no opinionated files or libraries included.
 - **Patternlab**: Architected to support Patternlab with Drupal.
-- **Static Code Analysis**: Checks both scripts and styles for stylistic and syntax errors.
+- **Static Code Analysis**: Checks both scripts and styles for stylistic and
+syntax errors.
 - **SVG**: Support SVG sprite generation.
-- **Performance Testing**: Generates info logs for all the stylesheets generated.
+- **Performance Testing**: Generates info logs for all the stylesheets
+generated.
 
 
 #### Setup
@@ -45,7 +47,8 @@
 - Generate a sub-theme
   - `drush kashmir sub_theme_name`
 - Configure settings
-  - Update settings in `gulp/_config.js` for Browsersync and Source for scripts and styles.
+  - Update settings in `gulp/_config.js` for Browsersync and Source for scripts
+and styles.
 
 
 #### Usage

@@ -19,7 +19,7 @@ function kashmir_drush_command() {
       'human_readable_name' => 'The name for the sub-theme.',
     ],
     'options' => [
-      'machine_name' => 'The machine-readable name for the sub-theme. This will be auto-generated from the human-readable name if ommited.',
+      'machine_name' => 'The machine-readable name for the sub-theme. This will be auto-generated from the human-readable name if omitted.',
       'description' => 'The description of your theme',
       'path' => 'The destination of your theme. Defaults to "themes/custom".',
     ],
@@ -332,4 +332,3 @@ function _kashmir_notify($human_readable_name, $theme_path) {
   ]);
   drush_print($message);
 }
-
