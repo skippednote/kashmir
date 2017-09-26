@@ -23,18 +23,23 @@ module.exports = function (gulp, config, bs) {
       .pipe(utils.onDev(plumber.stop()));
   });
 
-  gulp.task('styles', function () {
+  gulp.task('styles-ltr', function () {
     return gulp.src(config.styles.source)
-      .pipe(utils.onDev(plumber({errorHandler: utils.errorHandler})))
       .pipe(utils.onDev(sourcemaps.init()))
+      .pipe(utils.onDev(plumber({errorHandler: utils.errorHandler})))
       .pipe(sassGlob())
       .pipe(sass(config.styles.options).on('error', sass.logError))
       .pipe(postcss(processors))
+      .pipe(utils.onDev(plumber.stop()))
       .pipe(utils.onDev(sourcemaps.write()))
       .pipe(gulp.dest(config.styles.destination))
+      .pipe(utils.onDev(bs.stream()));
+  });
 
-      .pipe(gulp.src(config.styles.directionalSource, {passthrough: true}))
+  gulp.task('styles-rtl', function () {
+    return gulp.src(config.styles.directionalSource)
       .pipe(utils.onDev(sourcemaps.init()))
+      .pipe(utils.onDev(plumber({errorHandler: utils.errorHandler})))
       .pipe(sassGlob())
       .pipe(sassVariables(config.styles.variables))
       .pipe(sass(config.styles.options).on('error', sass.logError))
@@ -43,7 +48,9 @@ module.exports = function (gulp, config, bs) {
       .pipe(utils.onDev(plumber.stop()))
       .pipe(utils.onDev(sourcemaps.write()))
       .pipe(gulp.dest(config.styles.destination))
-
       .pipe(utils.onDev(bs.stream()));
   });
+
+  gulp.task('styles', gulp.series('styles-ltr', 'styles-rtl'));
 };
+
