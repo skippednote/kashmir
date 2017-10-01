@@ -1,11 +1,9 @@
-module.exports = function (gulp, config, bs) {
-  'use strict';
+const exec = require('child_process').exec;
+const utils = require('./_utils');
 
-  var exec = require('child_process').exec;
-  var utils = require('./_utils');
-
-  gulp.task('patternlab', function (done) {
-    exec(config.patternlab.command, function (err, stdout, stderr) {
+module.exports = function patternlab(gulp, config, bs) {
+  gulp.task('patternlab', (done) => {
+    exec(config.patternlab.command, (err) => {
       if (err) {
         err.message = err.message.split('\n').slice(1).join('\n');
         err.plugin = 'gulp-patternlab';

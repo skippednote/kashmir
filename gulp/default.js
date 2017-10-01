@@ -1,8 +1,6 @@
-module.exports = function (gulp, config) {
-  'use strict';
-
-  gulp.task('default', gulp.series(
-    gulp.parallel('styles-lint', 'scripts-lint'),
-    gulp.parallel('styles', 'scripts', 'svg')
+module.exports = function main(gulp) {
+  return gulp.task('default', gulp.series(
+    gulp.parallel('styles:lint', 'scripts:lint'),
+    gulp.parallel('styles', 'scripts', 'svg'),
   ));
 };

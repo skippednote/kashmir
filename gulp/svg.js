@@ -1,11 +1,7 @@
-module.exports = function (gulp, config, bs) {
-  'use strict';
+const svgStore = require('gulp-svgstore');
 
-  var svgStore = require('gulp-svgstore');
-
-  gulp.task('svg', function () {
-    return gulp.src(config.svg.source)
-      .pipe(svgStore())
-      .pipe(gulp.dest(config.svg.destination));
-  });
+module.exports = function svg(gulp, config) {
+  gulp.task('svg', () => gulp.src(config.svg.source)
+    .pipe(svgStore())
+    .pipe(gulp.dest(config.svg.destination)));
 };
