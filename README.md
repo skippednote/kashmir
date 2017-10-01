@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/skippednote/kashmir.svg?branch=8.x-1.x)](https://travis-ci.org/skippednote/kashmir)
 # Kashmir
 > A theme with modern tooling.
 

@@ -300,6 +300,7 @@ function _kashmir_update_file($file_path, $theme_name, $description, $file) {
     ['pattern' => "/$theme_name\/reset/", 'replacement' => "$theme_name/global"],
     ['pattern' => "/(?s)\n\n\n#### Setup sub-theme.*?(?=\n\n)/", 'replacement' => ''],
     ['pattern' => "/(?s)\nreset\:.*/", 'replacement' => ''],
+    ['pattern' => "/\[!(.*)skippednote\/kashmir\)/", 'replacement' => ''],
   ];
 
   $file_path = $file_path . '/' . str_replace("kashmir", $theme_name, $file);
