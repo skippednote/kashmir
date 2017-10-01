@@ -53,5 +53,5 @@ install:
   - npm install
 
 script:
-  - phpcs --standard=$HOME/.composer/vendor/drupal/coder/coder_sniffer/Drupal/ruleset.xml --ignore=*/node_modules/*,*/dist/*,*/gulp/*,gulpfile.js,README.md $WAZWAN_DIR
+  - phpcs --standard=$HOME/.composer/vendor/drupal/coder/coder_sniffer/Drupal/ruleset.xml --ignore=*/node_modules/*,*/dist/*,*/gulp/*,*/_twig-components/*,gulpfile.js,README.md $WAZWAN_DIR
   - gulp
