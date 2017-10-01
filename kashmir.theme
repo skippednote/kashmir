@@ -20,7 +20,7 @@ function kashmir_library_info_alter(&$libraries, $extension) {
           foreach ($library_value['css'][$css_type] as $file_name => $file_options) {
             if (strpos($file_name, '.ltr.css')) {
               $file_name_rtl = str_replace(".ltr.css", ".rtl.css", $file_name);
-              unset($libraries[$library_name]['css'][$css_type][$file_name_rtl]);
+              unset($libraries[$library_name]['css'][$css_type][$file_name]);
               $libraries[$library_name]['css'][$css_type][$file_name_rtl] = [$file_options];
             }
           }

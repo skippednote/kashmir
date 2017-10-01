@@ -1,9 +1,7 @@
 /**
  * @file
- * Globaly required scripts.
+ * Globaly required script.
  */
 
-(function ($) {
-  'use strict';
-
-})(jQuery);
+(function iife() {
+}());

@@ -20,7 +20,7 @@ generated.
     - [Windows](https://github.com/coreybutler/nvm-windows)
 - Gulp
   ```
-  $ npm install - gulp
+  $ npm install -g gulp
   ```
 - Composer
   ```
@@ -33,7 +33,7 @@ generated.
   - Components
     - `composer require drupal/components`
     - `drush dl components`
-  - Twig Tweak
+  - Twig Tweak (Optional)
     - `composer require drupal/twig_tweak`
     - `drush dl twig_tweak`
 
@@ -46,6 +46,8 @@ generated.
   - `drush en kashmir`
 - Generate a sub-theme
   - `drush kashmir sub_theme_name`
+- Setup Patternlab
+  - Run `npm run patternlab` to install and configure Patternlab.
 - Configure settings
   - Update settings in `gulp/_config.js` for Browsersync and Source for scripts
 and styles.
@@ -64,19 +66,22 @@ and styles.
   - `gulp styles`
   - To Compile styles and generate RTL styles for files with `.ltr` suffix.
 - Styles Lint
-  - `gulp scripts-lint`
+  - `gulp scripts:lint`
   - To check styles for errors and warnings.
-- Patternlab
-  - `gulp patternlab`
-  - To generate Patternlab from files in `components`.
 - Scripts
   - `gulp scripts`
   - To Compile and Uglify scripts
 - Scripts Lint
-  - `gulp scripts-lint`
+  - `gulp scripts:lint`
   - To check scripts for errors and warnings.
-- Performance
-  - `gulp performance`
+- Global Lint
+  - `gulp lint`
+  - To check styles and scripts for errors and warnings.
+- Patternlab
+  - `gulp patternlab`
+  - To generate Patternlab from files in `components`.
+- Statistics
+  - `gulp stats`
   - To check the stats of the stylesheets.
 - SVG
   - `gulp svg`
