@@ -1,0 +1,57 @@
+# Template based on https://github.com/acquia-pso/kashmir
+language: php
+
+php:
+  - 7
+
+env:
+  global:
+    - DOCROOT=$TRAVIS_BUILD_DIR/../drupal
+    - KASHMIR_DIR=$DOCROOT/themes/contrib/kashmir
+    - WAZWAN_DIR=$DOCROOT/themes/custom/wazwan
+
+cache:
+  apt: true
+  directories:
+  - "$HOME/.composer/cache"
+  - "$HOME/.composer/vendor"
+  - "$HOME/.drush/cache"
+  - "$HOME/.npm"
+  - "$HOME/.nvm"
+  - "$WAZWAN_DIR/node_modules"
+
+mysql:
+  database: drupal
+  username: root
+  encoding: utf8
+
+before_install:
+  - phpenv config-rm xdebug.ini
+  - composer self-update
+  - export PATH="$HOME/.composer/vendor/bin:$PATH"
+  - composer global require drush/drush:8.* --prefer-source
+  - composer global require drupal/coder:8.* --prefer-source
+  - phpenv rehash
+  - rm -f ~/.drush/cache/download/*---updates.drupal.org-release-history-*
+  - mysql -e 'create database drupal;'
+  - mv $WAZWAN_DIR/node_modules $TRAVIS_BUILD_DIR/
+
+install:
+  - cd ..
+  - drush dl drupal --drupal-project-rename=drupal -y
+  - cd drupal
+  - mkdir -p themes/contrib/kashmir
+  - cp -r ${TRAVIS_BUILD_DIR}/. themes/contrib/kashmir/
+  - mkdir -p themes/custom
+  - drush --verbose site-install minimal --db-url=mysql://root:@127.0.0.1/drupal --yes
+  - drush en kashmir -y
+  - drush kashmir wazwan
+  - cd $WAZWAN_DIR
+  - nvm install stable
+  - nvm use stable
+  - npm install -g gulp-cli
+  - npm install
+
+script:
+  - phpcs --standard=$HOME/.composer/vendor/drupal/coder/coder_sniffer/Drupal/ruleset.xml --ignore=*/node_modules/*,*/dist/*,*/gulp/*,gulpfile.js,README.md $WAZWAN_DIR
+  - gulp
