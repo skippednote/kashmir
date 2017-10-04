@@ -299,7 +299,6 @@ function _kashmir_update_file($file_path, $theme_name, $description, $file) {
     ['pattern' => '/description: .*/', 'replacement' => "description: $description"],
     ['pattern' => "/# - $theme_name\/reset/", 'replacement' => "  - $theme_name/reset\n  - $theme_name/global"],
     ['pattern' => "/(?s)\n\n\n#### Setup sub-theme.*?(?=\n\n)/", 'replacement' => ''],
-    ['pattern' => "/(?s)\nreset\:.*/", 'replacement' => ''],
     ['pattern' => "/\[!(.*)skippednote\/kashmir\)/", 'replacement' => ''],
   ];
 

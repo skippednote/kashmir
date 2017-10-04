@@ -1,13 +1,19 @@
-global:
+# Empty library added for overriding libraries cache.
+ltr:
   version: VERSION
   css:
     theme:
-      dist/css/global.css: {}
-  js:
-    dist/global.js: {}
 
 reset:
   version: VERSION
   css:
     base:
       dist/css/reset.css: {}
+
+global:
+  version: VERSION
+  css:
+    theme:
+      dist/css/global.ltr.css: {}
+  js:
+    dist/global.js: {}
