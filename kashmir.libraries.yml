@@ -2,9 +2,14 @@ global:
   version: VERSION
   css:
     theme:
-      dist/css/global.css: {}
+      dist/css/global.ltr.css: {}
   js:
     dist/global.js: {}
+
+ltr:
+  version: VERSION
+  css:
+    theme:
 
 reset:
   version: VERSION
