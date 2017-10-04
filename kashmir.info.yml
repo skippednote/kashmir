@@ -11,7 +11,7 @@ regions:
   footer: Footer
 
 libraries:
-  - kashmir/reset
+# - kashmir/reset
 
 # component-libraries:
 #   atoms:
