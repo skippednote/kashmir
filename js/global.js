@@ -3,5 +3,4 @@
  * Globaly required script.
  */
 
-(function iife() {
-}());
+(function iife() {}());
