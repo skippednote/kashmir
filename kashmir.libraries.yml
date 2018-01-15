@@ -3,6 +3,7 @@ ltr:
   version: VERSION
   css:
     theme:
+      css/ltr.css: {}
 
 reset:
   version: VERSION
