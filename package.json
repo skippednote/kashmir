@@ -32,11 +32,15 @@
     "typescript": "^3.5.1"
   },
   "scripts": {
-    "precommit": "gulp lint --type production",
     "postinstall": "find node_modules/ -name '*.info' -type f -delete"
   },
   "hooks": {
     "pre-commit": "gulp lint"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "husky": {
+    "hooks": {
+      "pre-commit": "gulp lint --type production"
+    }
+  }
 }

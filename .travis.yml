@@ -1,24 +1,22 @@
-# Template based on https://github.com/acquia-pso/kashmir
 language: php
 
 php:
-  - 7
+  - 7.3
 
 env:
   global:
     - DOCROOT=$TRAVIS_BUILD_DIR/../drupal
-    - KASHMIR_DIR=$DOCROOT/themes/contrib/kashmir
-    - WAZWAN_DIR=$DOCROOT/themes/custom/wazwan
+    - WAZWAN_DIR=$DOCROOT/themes/custom/kashmir
 
 cache:
   apt: true
   directories:
-  - "$HOME/.composer/cache"
-  - "$HOME/.composer/vendor"
-  - "$HOME/.drush/cache"
-  - "$HOME/.npm"
-  - "$HOME/.nvm"
-  - "$WAZWAN_DIR/node_modules"
+    - '$HOME/.composer/cache'
+    - '$HOME/.composer/vendor'
+    - '$HOME/.drush/cache'
+    - '$HOME/.npm'
+    - '$HOME/.nvm'
+    - '$WAZWAN_DIR/node_modules'
 
 mysql:
   database: drupal
@@ -40,12 +38,9 @@ install:
   - cd ..
   - drush dl drupal --drupal-project-rename=drupal -y
   - cd drupal
-  - mkdir -p themes/contrib/kashmir
-  - cp -r ${TRAVIS_BUILD_DIR}/. themes/contrib/kashmir/
   - mkdir -p themes/custom
   - drush --verbose site-install minimal --db-url=mysql://root:@127.0.0.1/drupal --yes
-  - drush en kashmir -y
-  - drush kashmir wazwan
+  - git clone https://github.com/skippednote/kashmir.git
   - cd $WAZWAN_DIR
   - nvm install stable
   - nvm use stable
