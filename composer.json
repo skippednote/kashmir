@@ -2,7 +2,7 @@
   "name": "drupal/kashmir",
   "description": "A theme with modern tooling.",
   "type": "drupal-theme",
-  "license": "GPL-2.0",
+  "license": "MIT",
   "authors": [
     {
       "name": "Bassam Ismail",

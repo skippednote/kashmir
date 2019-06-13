@@ -1,20 +1,13 @@
 [![Build Status](https://travis-ci.org/skippednote/kashmir.svg?branch=8.x-1.x)](https://travis-ci.org/skippednote/kashmir)
+
 # Kashmir
+
 > A theme with modern tooling.
 
 ![Kashmir Screenshot](screenshot.png)
 
-#### Features
-- **Lean**: Uses Stable templates and no opinionated files or libraries included.
-- **Patternlab**: Architected to support Patternlab with Drupal.
-- **Static Code Analysis**: Checks both scripts and styles for stylistic and
-syntax errors.
-- **SVG**: Support SVG sprite generation.
-- **Performance Testing**: Generates info logs for all the stylesheets
-generated.
-
-
 #### Setup
+
 - Node
   - Use `nvm`
     - [Unix based](https://github.com/creationix/nvm)
@@ -38,31 +31,29 @@ generated.
     - `composer require drupal/twig_tweak`
     - `drush dl twig_tweak`
 
-
 #### Setup sub-theme
-- Install Kashmir
-  - `composer require drupal/kashmir`
-  - `drush dl kashmir`
-- Enable Kashmir
-  - `drush en kashmir`
-- Generate a sub-theme
-  - `drush kashmir sub_theme_name`
-- Setup Patternlab
-  - Run `npm run patternlab` to install and configure Patternlab.
-- Configure settings
-  - Update settings in `gulp/_config.js` for Browsersync and Source for scripts
-and styles.
 
+- Install Kashmir
+
+  - `git clone https://github.com/skippednote/kashmir.git subthemeName`
+  - Rename reference to `kashmir` to `subthemeName`
+
+- Enable theme
+  - `drush en subthemeName`
+- Configure settings
+  - Update settings in `gulp-tasks/_config.js` for Browsersync and Source for scripts
+    and styles.
 
 #### Usage
+
 - Dev Environment
   - Build assets by running: `gulp`.
   - Watch for changes using: `gulp watch`.
 - Prod/Test Environment
   - Build assets by running: `gulp --type production`.
 
-
 #### Theme tasks
+
 - Styles
   - `gulp styles`
   - To Compile styles and generate RTL styles for files with `.ltr` suffix.
@@ -78,12 +69,6 @@ and styles.
 - Global Lint
   - `gulp lint`
   - To check styles and scripts for errors and warnings.
-- Patternlab
-  - `gulp patternlab`
-  - To generate Patternlab from files in `components`.
-- Statistics
-  - `gulp stats`
-  - To check the stats of the stylesheets.
 - SVG
   - `gulp svg`
   - To combine multiple SVG files into a single sprite.

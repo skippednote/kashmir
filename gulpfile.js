@@ -1,13 +1,10 @@
-const config = require('./gulp/_config');
+const config = require('./gulp-tasks/_config');
 const gulp = require('gulp');
 const bs = require('browser-sync').create();
 
-require('./gulp/styles')(gulp, config, bs);
-require('./gulp/scripts')(gulp, config, bs);
-require('./gulp/patternlab')(gulp, config, bs);
-require('./gulp/svg')(gulp, config, bs);
-require('./gulp/stats')(gulp, config, bs);
-require('./gulp/watch')(gulp, config, bs);
-require('./gulp/lint')(gulp, config);
-require('./gulp/default')(gulp, config);
-
+require('./gulp-tasks/styles')(gulp, config, bs);
+require('./gulp-tasks/scripts')(gulp, config, bs);
+require('./gulp-tasks/svg')(gulp, config, bs);
+require('./gulp-tasks/watch')(gulp, config, bs);
+require('./gulp-tasks/lint')(gulp, config);
+require('./gulp-tasks/default')(gulp, config);
