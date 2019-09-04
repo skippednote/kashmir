@@ -19,6 +19,7 @@
     "gulp-postcss": "8.0.0",
     "gulp-sass": "4.0.2",
     "gulp-sass-glob": "1.0.9",
+    "gulp-sourcemaps": "^2.6.5",
     "gulp-stylelint": "9.0.0",
     "gulp-svgstore": "7.0.1",
     "gulp-typescript": "5.0.1",
@@ -26,6 +27,7 @@
     "husky": "3.0.0",
     "normalize.scss": "0.1.0",
     "prettier": "1.18.2",
+    "pretty-quick": "^1.11.1",
     "sass-toolkit": "2.10.2",
     "stylelint": "10.1.0",
     "stylelint-config-standard": "18.3.0",
@@ -40,7 +42,7 @@
   "license": "MIT",
   "husky": {
     "hooks": {
-      "pre-commit": "gulp lint --type production"
+      "pre-commit": "pretty-quick --staged --pattern \"**/*.*(ts|scss)\" && gulp lint --type production"
     }
   }
 }

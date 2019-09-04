@@ -1,5 +1,4 @@
 module.exports = {
-  rtl: true,
   styles: {
     source: ['sass/**/*.scss'],
     destination: 'dist/css/',
@@ -9,7 +8,7 @@ module.exports = {
     }
   },
   scripts: {
-    source: ['js/**/*.ts'],
+    source: ['ts/**/*.ts'],
     destination: 'dist/js/'
   },
   svg: {
@@ -33,11 +32,6 @@ module.exports = {
           failAfterError: true
         }
       ]
-    }
-  },
-  eslint: {
-    options: {
-      fix: false
     }
   },
   browserSync: {

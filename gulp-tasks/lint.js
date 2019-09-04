@@ -1,5 +1,4 @@
 const stylelint = require('gulp-stylelint');
-const gutil = require('gulp-util');
 const eslint = require('gulp-eslint');
 const plumber = require('gulp-plumber');
 const utils = require('./_utils');
@@ -10,7 +9,7 @@ module.exports = function lint(gulp, config) {
       .src(config.styles.source)
       .pipe(utils.onDev(plumber()))
       .pipe(
-        gutil.env.type === 'undefined'
+        process.env.CI === 'undefined'
           ? stylelint(config.stylelint.options)
           : stylelint(config.stylelint.optionsTest)
       )
@@ -21,7 +20,7 @@ module.exports = function lint(gulp, config) {
     gulp
       .src(config.scripts.source)
       .pipe(utils.onDev(plumber()))
-      .pipe(eslint(config.eslint.options))
+      .pipe(eslint())
       .pipe(eslint.format())
       .pipe(eslint.failAfterError())
       .pipe(utils.onDev(plumber.stop()))
