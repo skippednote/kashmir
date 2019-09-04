@@ -1,14 +1,24 @@
 {
-  "name": "drupal/kashmir",
-  "description": "A theme with modern tooling.",
+  "name": "kashmir",
+  "description": "Theme for Drupal 8 with PL integration",
   "type": "drupal-theme",
   "license": "MIT",
-  "authors": [
-    {
-      "name": "Bassam Ismail",
-      "email": "skippednote@gmail.com"
+  "repositories": {
+    "drupal": {
+      "type": "composer",
+      "url": "https://packages.drupal.org/8"
     }
-  ],
+  },
+  "require": {
+    "drupal/components": "^1.0",
+    "drupal-pattern-lab/add-attributes-twig-extension": "^1.0",
+    "drupal-pattern-lab/bem-twig-extension": "^1.0",
+    "drupal-pattern-lab/attach-library-twig-extension": "^1.0",
+    "drupal-pattern-lab/unified-twig-extensions": "^0.1"
+  },
+  "require-dev": {},
   "minimum-stability": "dev",
-  "require": {}
+  "prefer-stable": true,
+  "scripts": {},
+  "extra": []
 }

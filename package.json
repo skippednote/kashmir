@@ -34,7 +34,7 @@
     "typescript": "3.5.2"
   },
   "scripts": {
-    "postinstall": "find node_modules/ -name '*.info' -type f -delete"
+    "postinstall": "find node_modules/ -name '*.info' -type f -delete && ./scripts/pattern_lab.sh && ./scripts/twig_functions.sh"
   },
   "hooks": {
     "pre-commit": "gulp lint"
