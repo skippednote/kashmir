@@ -1,6 +1,6 @@
 module.exports = {
   styles: {
-    source: ['sass/**/*.scss'],
+    source: ['components/_patterns/sass/**/*.scss'],
     destination: 'dist/css/',
     options: {
       outputStyle: 'expanded',
