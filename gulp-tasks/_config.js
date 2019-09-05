@@ -8,7 +8,7 @@ module.exports = {
     }
   },
   scripts: {
-    source: ['ts/**/*.ts'],
+    source: ['components/_patterns/**/*.ts'],
     destination: 'dist/js/'
   },
   svg: {

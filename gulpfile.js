@@ -7,4 +7,5 @@ require('./gulp-tasks/scripts')(gulp, config, bs);
 require('./gulp-tasks/svg')(gulp, config, bs);
 require('./gulp-tasks/watch')(gulp, config, bs);
 require('./gulp-tasks/lint')(gulp, config);
+require('./gulp-tasks/pl')(gulp, config);
 require('./gulp-tasks/default')(gulp, config);
