@@ -4,8 +4,8 @@
   "description": "A Drupal theme with modern tooling.",
   "private": true,
   "dependencies": {
-    "@typescript-eslint/eslint-plugin": "1.11.0",
-    "@typescript-eslint/parser": "1.11.0",
+    "@typescript-eslint/eslint-plugin": "3.10.1",
+    "@typescript-eslint/parser": "3.10.1",
     "autoprefixer": "9.6.0",
     "breakpoint-sass": "2.7.1",
     "browser-sync": "2.26.7",
