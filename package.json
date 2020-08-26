@@ -6,7 +6,7 @@
   "dependencies": {
     "@typescript-eslint/eslint-plugin": "1.11.0",
     "@typescript-eslint/parser": "1.11.0",
-    "autoprefixer": "9.6.0",
+    "autoprefixer": "9.8.6",
     "breakpoint-sass": "2.7.1",
     "browser-sync": "2.26.7",
     "eslint": "6.0.1",
